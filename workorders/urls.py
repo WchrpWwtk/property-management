@@ -6,16 +6,16 @@ router = DefaultRouter()
 router.register(
     r"cleaning-work-orders",
     views.CleaningWorkOrderViewSet,
-    basename="cleaning-work-orders",
+    basename="cleaningworkorders",
 )
-router.register(r"maid-requests", views.MaidRequestViewSet, basename="maid-requests")
+router.register(r"maid-requests", views.MaidRequestViewSet, basename="maidrequests")
 router.register(
     r"technician-requests",
     views.TechnicianRequestViewSet,
-    basename="technician-requests",
+    basename="technicianrequests",
 )
 router.register(
-    r"amenity-requests", views.AmenityRequestViewSet, basename="amenity-requests"
+    r"amenity-requests", views.AmenityRequestViewSet, basename="amenityrequests"
 )
 
 urlpatterns = [path("", include(router.urls))]

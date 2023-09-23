@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import WorkOrder
+from .models import WorkOrder, PropertyUser
 
 
 class CleaningWorkOrderSerialzer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class CleaningWorkOrderSerialzer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if not user.is_maid_uservisor():
+        if user.user_role != "Maid Supervisor":
             raise serializers.ValidationError(
                 "Cleaning work orders can only be created by Maid Supervisors."
             )
@@ -40,7 +40,7 @@ class MaidRequestSerializer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if not user.is_maid_supervisor():
+        if user.user_role != "Maid Supervisor":
             raise serializers.ValidationError(
                 "Maid requests can only be created by Maid Supervisors."
             )
@@ -63,7 +63,7 @@ class TechnicianRequestSerializer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if user.is_technician_supervisor():
+        if user.user_role == "Technician Supervisor":
             raise serializers.ValidationError(
                 "Technician requests cannot be created by Technician Supervisors."
             )
@@ -87,7 +87,7 @@ class AmenityRequestSerializer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if not user.is_guest():
+        if user.user_role != "Guest":
             raise serializers.ValidationError(
                 "Amenity requests can only be created by guests."
             )

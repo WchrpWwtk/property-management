@@ -23,15 +23,6 @@ class PropertyUser(AbstractUser):
     def __str__(self):
         return self.username
 
-    def is_maid_supervisor(self):
-        return self.user_role == "Maid Supervisor"
-
-    def is_guest(self):
-        return self.user_role == "Guest"
-
-    def is_technician_supervisor(self):
-        return self.user_role == "Technician Supervisor"
-
 
 class WorkOrder(models.Model):
     WORK_ORDER_TYPES = [
