@@ -13,6 +13,7 @@
   4. Run command `docker compose up`
   5. Open other terminal
   6. Run command `docker compose exec server bash`
-  7. Run command `python manage.py createsuperuser` for create admin account
-  8. Go to [Localhost](http://localhost:8000/admin) and login with created account
-  9. Create more user in user tab
+  7. For test run command `python manage.py test`
+  8. For create superuser run command `python manage.py createsuperuser` for create admin account
+  9. Go to [Localhost](http://localhost:8000/admin) and login with created account
+  10. Create more user in user tab
