@@ -43,7 +43,6 @@ class PropertyUserAdmin(UserAdmin):
                     "first_name",
                     "last_name",
                     "user_role",
-                    "is_staff",
                 ),
             },
         ),
