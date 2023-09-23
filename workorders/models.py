@@ -22,13 +22,13 @@ class PropertyUser(AbstractUser):
 
     def __str__(self):
         return self.username
-    
+
     def is_maid_supervisor(self):
         return self.user_role == "Maid Supervisor"
-    
+
     def is_guest(self):
         return self.user_role == "Guest"
-    
+
     def is_technician_supervisor(self):
         return self.user_role == "Technician Supervisor"
 
@@ -53,11 +53,14 @@ class WorkOrder(models.Model):
         PropertyUser, on_delete=models.CASCADE, related_name="created_workorders"
     )
     assigned_to = models.ForeignKey(
-        PropertyUser, on_delete=models.CASCADE, related_name="assigned_workorders"
+        PropertyUser,
+        on_delete=models.CASCADE,
+        related_name="assigned_workorders",
+        null=True,
     )
     room = models.CharField(max_length=10)
-    started_at = models.DateTimeField()
-    finished_at = models.DateTimeField()
+    started_at = models.DateTimeField(null=True)
+    finished_at = models.DateTimeField(null=True)
     order_type = models.CharField(max_length=20, choices=WORK_ORDER_TYPES)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
@@ -68,9 +71,8 @@ class WorkOrder(models.Model):
     defect_type = models.CharField(max_length=50, blank=True, null=True)
 
     # For Amenity Request
-    amenity_type = models.CharField(max_length=50, blank=True, null=True) 
+    amenity_type = models.CharField(max_length=50, blank=True, null=True)
     quantity = models.PositiveIntegerField(blank=True, null=True)
-
 
     def __str__(self):
         return f"${self.id} {self.order_type} {self.room} {self.status}"

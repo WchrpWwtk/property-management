@@ -5,7 +5,14 @@ from .models import WorkOrder
 class CleaningWorkOrderSerialzer(serializers.ModelSerializer):
     class Meta:
         model = WorkOrder
-        fields = ["room", "status"]
+        fields = [
+            "room",
+            "started_at",
+            "finished_at",
+            "status",
+            "created_by",
+            "assigned_to",
+        ]
 
     def validate(self, data):
         user = self.context["request"].user
@@ -21,7 +28,14 @@ class CleaningWorkOrderSerialzer(serializers.ModelSerializer):
 class MaidRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkOrder
-        fields = ["room", "description"]
+        fields = [
+            "room",
+            "started_at",
+            "finished_at",
+            "description",
+            "created_by",
+            "assigned_to",
+        ]
 
     def validate(self, data):
         user = self.context["request"].user
@@ -37,7 +51,14 @@ class MaidRequestSerializer(serializers.ModelSerializer):
 class TechnicianRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkOrder
-        fields = ["room", "defect_type"]
+        fields = [
+            "room",
+            "started_at",
+            "finished_at",
+            "defect_type",
+            "created_by",
+            "assigned_to",
+        ]
 
     def validate(self, data):
         user = self.context["request"].user
@@ -53,7 +74,15 @@ class TechnicianRequestSerializer(serializers.ModelSerializer):
 class AmenityRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkOrder
-        fields = ["room", "amenity_type", "quantity"]
+        fields = [
+            "room",
+            "started_at",
+            "finished_at",
+            "amenity_type",
+            "quantity",
+            "created_by",
+            "assigned_to",
+        ]
 
     def validate(self, data):
         user = self.context["request"].user
