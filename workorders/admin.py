@@ -29,7 +29,7 @@ class PropertyUserAdmin(UserAdmin):
             },
         ),
         ("Important dates", {"fields": ("last_login", "date_joined")}),
-        ("Custom Fields", {"fields": ("user_role",)}),  # Add any custom fields here
+        ("Custom Fields", {"fields": ("user_role",)}),
     )
     add_fieldsets = (
         (
