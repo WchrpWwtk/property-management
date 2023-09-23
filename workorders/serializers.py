@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import WorkOrder, PropertyUser
+from .models import WorkOrder
 
 
 class CleaningWorkOrderSerialzer(serializers.ModelSerializer):

@@ -2,7 +2,7 @@ from rest_framework import permissions
 
 
 class IsMaidSupervisorOrReadOnly(permissions.BasePermission):
-    def has_permission(self, request, view):
+    def has_permission(self, request, _):
         if (
             request.user.is_authenticated
             and request.user.user_role == "Maid Supervisor"
@@ -13,7 +13,7 @@ class IsMaidSupervisorOrReadOnly(permissions.BasePermission):
 
 
 class IsGuestOrReadOnly(permissions.BasePermission):
-    def has_permission(self, request, view):
+    def has_permission(self, request, _):
         if request.user.is_authenticated and request.user.user_role == "Guest":
             return True
 

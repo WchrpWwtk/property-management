@@ -1,6 +1,5 @@
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from .models import WorkOrder, PropertyUser
+from rest_framework import viewsets
+from .models import WorkOrder
 from .permissions import IsMaidSupervisorOrReadOnly, IsGuestOrReadOnly
 from .serializers import (
     CleaningWorkOrderSerialzer,
