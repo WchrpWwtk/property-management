@@ -10,7 +10,7 @@ class CleaningWorkOrderSerialzer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if not user.is_maid_uservisor:
+        if not user.is_maid_uservisor():
             raise serializers.ValidationError(
                 "Cleaning work orders can only be created by Maid Supervisors."
             )
@@ -26,7 +26,7 @@ class MaidRequestSerializer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if not user.is_maid_supervisor:
+        if not user.is_maid_supervisor():
             raise serializers.ValidationError(
                 "Maid requests can only be created by Maid Supervisors."
             )
@@ -40,6 +40,13 @@ class TechnicianRequestSerializer(serializers.ModelSerializer):
         fields = ["room", "defect_type"]
 
     def validate(self, data):
+        user = self.context["request"].user
+
+        if user.is_technician_supervisor():
+            raise serializers.ValidationError(
+                "Technician requests cannot be created by Technician Supervisors."
+            )
+
         return data
 
 
@@ -51,7 +58,7 @@ class AmenityRequestSerializer(serializers.ModelSerializer):
     def validate(self, data):
         user = self.context["request"].user
 
-        if not user.is_guest:
+        if not user.is_guest():
             raise serializers.ValidationError(
                 "Amenity requests can only be created by guests."
             )
