@@ -1,12 +1,19 @@
-# Property Management Backend (Work in progress)
+# Property Management Backend Assignment (Work in progress)
 
-## Assignment for test
+## Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
 
-### Prerequisite
-  1. Python 3.11
+### Prerequisites:
+  1. Python 3.x
   2. Docker
 
-### Follow this step:
+### Getting Started:
   1. Clone project
   2. Open folder in vscode or other
   3. Open terminal
