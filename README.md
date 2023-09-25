@@ -9,11 +9,12 @@
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 
+## Getting Started:
 ### Prerequisites:
   1. Python 3.x
   2. Docker
 
-### Getting Started:
+### Installation:
   1. Clone project
   2. Open folder in vscode or other
   3. Open terminal
